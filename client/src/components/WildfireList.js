@@ -1,19 +1,20 @@
 import React from 'react';
 
 const WildfireList = ({ wildfires }) => {
-  if (typeof wildfires === undefined) {
-    return <p>No wildfires found.</p>;
-  }
-
-  if (!wildfires.length) {
-    return <p>Loading...</p>
-  }
+  try {
+    if (!wildfires.length) {
+      return <p className='text-danger'>No Wildfires Found</p>
+    }
+  } catch (error) {
+    return <p className='text-danger'>Error retrieving data {error}</p>;
+  } 
 
   return (
     <div className='table-responsive small'>
       <table className='table table-striped table-sm'>
         <thead className='thead-dark'>
           <tr>
+            <th scope='col'>ID</th>
             <th scope='col'>Fire Number</th>
             <th scope='col'>Fire Year</th>
             <th scope='col'>Response Type Desc</th>
@@ -31,14 +32,14 @@ const WildfireList = ({ wildfires }) => {
             <th scope='col'>Longitude</th>
             <th scope='col'>Current Size</th>
             <th scope='col'>Feature Code</th>
-            <th scope='col'>Objectid</th>
             <th scope='col'>Fire Url</th>
           </tr>
         </thead>
         <tbody>
           {
-            wildfires.map(wildfire => (
-              <tr>
+            wildfires.map((wildfire, key) => (
+              <tr key={key}>
+                <td>{wildfire.properties.OBJECTID}</td>
                 <td>{wildfire.properties.FIRE_NUMBER}</td>
                 <td>{wildfire.properties.FIRE_YEAR}</td>
                 <td>{wildfire.properties.RESPONSE_TYPE_DESC}</td>
@@ -56,7 +57,6 @@ const WildfireList = ({ wildfires }) => {
                 <td>{wildfire.properties.LONGITUDE}</td>
                 <td>{wildfire.properties.CURRENT_SIZE}</td>
                 <td>{wildfire.properties.FEATURE_CODE}</td>
-                <td>{wildfire.properties.OBJECTID}</td>
                 <td>
                   <a
                     href={wildfire.properties.FIRE_URL}
