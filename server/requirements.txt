@@ -5,3 +5,4 @@ aiocache
 pytest
 pytest-asyncio
 python-dotenv
+requests
