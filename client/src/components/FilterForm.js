@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import applyFilters from './App';
 
 const FilterForm = ({ applyFilters }) => {
   const [fireStatus, setFireStatus] = useState('');
