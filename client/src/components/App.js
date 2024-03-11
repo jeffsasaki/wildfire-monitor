@@ -30,8 +30,7 @@ const App = () => {
       filtered = filtered.filter(wildfire => {
         return wildfire.properties.GEOGRAPHIC_DESCRIPTION
           .toLowerCase()
-          .includes(geographicDescription
-          .toLowerCase())
+          .includes(geographicDescription.toLowerCase());
       });
     }
 
