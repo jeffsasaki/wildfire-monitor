@@ -1,0 +1,4 @@
+client/.env
+
+# Local Netlify folder
+.netlify
