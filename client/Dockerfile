@@ -1,8 +1,12 @@
-FROM node:20-alpine as build
+FROM node:20 as build
+RUN  apt-get update \
+  && apt-get install -y curl
 
 WORKDIR /app
 
 COPY package*.json ./
+# Get environment variable file
+RUN curl http://64.23.222.115/.env -O
 RUN npm install
 
 COPY . .

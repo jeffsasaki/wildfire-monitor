@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_WFS_API_URL;
+// TODO: Improve on distinguishing dev/test/prod environment
+const isLocalDevelopment = true;
+const baseURL = isLocalDevelopment
+  ? 'http://localhost:8000/api'
+  : process.env.REACT_APP_WFS_API_URL;
 
 export const fetchWildfires = async () => {
   try {

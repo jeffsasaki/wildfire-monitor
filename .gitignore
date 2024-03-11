@@ -2,3 +2,5 @@ client/.env
 
 # Local Netlify folder
 .netlify
+.env
+server/__pycache__
