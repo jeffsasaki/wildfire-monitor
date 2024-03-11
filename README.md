@@ -40,4 +40,4 @@ Note: API must be running on local for cypress to work.
 * Since data will remain unchanged for a period of time, our backend acts only as a proxy and caches data for 60 minutes, preventing unncessary fetch calls every time the page loads.
 * CSV Download is based on the data shown in the table.
 * To keep security in mind, the app obfuscates the base URL. The .env file is downloaded externally. While this approach is not fully secure, this would ideally be kept as a secret or a secure config store.
-* CI is simplified to running unit tests on push, through Github Actions.
+* CI is simplified to running unit tests on push, through Github Actions. See https://github.com/jeffsasaki/wildfire-monitor/actions
