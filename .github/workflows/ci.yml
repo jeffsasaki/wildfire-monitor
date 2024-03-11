@@ -5,11 +5,11 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    env:
+      REACT_APP_WFS_API_URL: ${{ secrets.REACT_APP_WFS_API_URL }}
     strategy:
       matrix:
         node-version: [20.x]
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -20,8 +20,7 @@ jobs:
       run: |
         cd client
         npm install
-        curl http://64.23.222.115/.env -O
-    - name: Run Unit Test
+    - name: Run Unit Tests
       run: |
         cd client
         npm test
