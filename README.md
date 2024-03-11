@@ -40,3 +40,4 @@ npx cypress run --spec "cypress/e2e/spec.cy.js"
 * To keep security in mind, it obfuscates the base URL.
 * CSV Download is based on the data shown in the table.
 * .env file is downloaded externally to obfuscate original endpoint. While this approach is not fully secure, this would ideally be kept as a secret or a secure config store.
+* CI is simplified to running unit test and cypress on push via Github Actions.
