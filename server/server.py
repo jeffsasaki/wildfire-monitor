@@ -6,7 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import httpx
 import os
-import requests
 import uvicorn
 
 app = FastAPI()
@@ -14,13 +13,9 @@ cache = Cache(Cache.MEMORY, serializer=JsonSerializer())
 load_dotenv()
 
 # Resolve CORS issue
-allowed_origins = [
-    "http://localhost:3000",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -5,8 +5,6 @@ RUN  apt-get update \
 WORKDIR /app
 
 COPY package*.json ./
-# Get environment variable file
-RUN curl http://64.23.222.115/.env -O
 RUN npm install
 
 COPY . .
