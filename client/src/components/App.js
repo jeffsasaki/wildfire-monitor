@@ -28,7 +28,6 @@ const App = () => {
     }
     if (geographicDescription) {
       filtered = filtered.filter(wildfire => (wildfire.properties.GEOGRAPHIC_DESCRIPTION || '').toLowerCase().includes(geographicDescription.toLowerCase()));
-      console.log(filtered);
     }
 
     setFilteredWildfires(filtered);
