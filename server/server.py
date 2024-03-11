@@ -35,6 +35,8 @@ async def wfs_proxy():
     if cached_response is not None:
         return JSONResponse(content=cached_response)
     
+    print("Cache Miss. Calling Endpoint")
+    
     async with httpx.AsyncClient() as client:
         try:
             response = await client.get(TARGET_URL)
