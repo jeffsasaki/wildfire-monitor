@@ -27,11 +27,8 @@ const App = () => {
       filtered = filtered.filter(wildfire => wildfire.properties.FIRE_CAUSE === fireCause);
     }
     if (geographicDescription) {
-      filtered = filtered.filter(wildfire => {
-        return wildfire.properties.GEOGRAPHIC_DESCRIPTION
-          .toLowerCase()
-          .includes(geographicDescription.toLowerCase());
-      });
+      filtered = filtered.filter(wildfire => (wildfire.properties.GEOGRAPHIC_DESCRIPTION || '').toLowerCase().includes(geographicDescription.toLowerCase()));
+      console.log(filtered);
     }
 
     setFilteredWildfires(filtered);
@@ -50,7 +47,7 @@ const App = () => {
       />
       <button
         className="btn btn-primary my-2"
-        onClick={ handleDownloadClick }
+        onClick={handleDownloadClick}
         disabled={!filteredWildfires.length}
       >
         Download as CSV
