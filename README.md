@@ -31,12 +31,12 @@ cd client
 npm test
 npx cypress run --spec "cypress/e2e/spec.cy.js"
 ```
-Note: API must be running on local for cypress to work.
+Note: The API must be running locally for Cypress to work.
 
 ## Technical Approach and Assumptions.
-* Filtering is done on the client side as opposed to using cql_filter param. We are doing an initial call to fetch all data.
-* Since data will remain unchanged for a period of time, our backend acts only as a proxy and caches data for 60 minutes, preventing unncessary fetch calls every time the page loads.
-* To keep security in mind, it obfuscates the base URL.
-* CSV Download is based on the data shown in the table.
-* .env file is downloaded externally to obfuscate original endpoint. While this approach is not fully secure, this would ideally be kept as a secret or a secure config store.
-* CI is simplified to running unit tests via Github Actions.
+* Filtering is performed on the client side rather than using the cql_filter parameter. We make an initial call to fetch all the data.
+* Given that the data will remain unchanged for a period of time, our backend serves merely as a proxy and caches the data for 60 minutes to avoid unnecessary fetch calls each time the page is loaded.
+* With security in mind, the base URL is obfuscated.
+* CSV download functionality is based on the data displayed in the table.
+* The .env file is downloaded externally to obfuscate the original endpoint. While this approach does not fully secure the endpoint, ideally, it should be kept as a secret or in a secure config store.
+* Continuous Integration (CI) is simplified to run unit tests via GitHub Actions.
