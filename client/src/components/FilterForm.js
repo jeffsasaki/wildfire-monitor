@@ -33,7 +33,7 @@ const FilterForm = ({ applyFilters }) => {
             <option value="Unknown">Unknown</option>
           </select>
         </div>
-        <div class="form-group col-md-6 col-sm-12">
+        <div className="form-group col-md-6 col-sm-12">
           <label htmlFor="geographicDescription">Geographic Description:</label>
           <input
             type="text"

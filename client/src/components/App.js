@@ -21,20 +21,25 @@ const App = () => {
     let filtered = wildfires;
 
     if (fireStatus) {
-      filtered = filtered.filter(wf => wf.properties.FIRE_STATUS === fireStatus);
+      filtered = filtered.filter(wildfire => wildfire.properties.FIRE_STATUS === fireStatus);
     }
     if (fireCause) {
-      filtered = filtered.filter(wf => wf.properties.FIRE_CAUSE === fireCause);
+      filtered = filtered.filter(wildfire => wildfire.properties.FIRE_CAUSE === fireCause);
     }
     if (geographicDescription) {
-      filtered = filtered.filter(wf => wf.properties.GEOGRAPHIC_DESCRIPTION.toLowerCase().includes(geographicDescription.toLowerCase()));
+      filtered = filtered.filter(wildfire => {
+        return wildfire.properties.GEOGRAPHIC_DESCRIPTION
+          .toLowerCase()
+          .includes(geographicDescription
+          .toLowerCase())
+      });
     }
 
     setFilteredWildfires(filtered);
   };
 
   const handleDownloadClick = () => {
-    const csvData = convertToCSV(filteredWildfires.map(wf => wf.properties));
+    const csvData = convertToCSV(filteredWildfires.map(wildfire => wildfire.properties));
     downloadCSV(csvData, `bc-2023-wildfires-${+new Date()}.csv`);
   };
 
@@ -44,7 +49,13 @@ const App = () => {
       <FilterForm
         applyFilters={applyFilters}
       />
-      <button className="btn btn-primary my-2" onClick={ handleDownloadClick }>Download as CSV</button>
+      <button
+        className="btn btn-primary my-2"
+        onClick={ handleDownloadClick }
+        disabled={!filteredWildfires.length}
+      >
+        Download as CSV
+      </button>
       <div className='table-responsive'>
         <WildfireList wildfires={filteredWildfires} />
       </div>
