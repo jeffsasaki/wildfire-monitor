@@ -16,9 +16,14 @@ docker run -p 3000:80 wildfire-monitor
 * Frontend: React on Node v20
 * Backend: FastAPI (Python)
 
-## Testing
-Unit test can be done via `npm test`.
-Functional (e2e) test can be done via the `npx cypress run --spec "cypress/e2e/spec.cy.js"`.
+## Testing (Frontend)
+
+Unit test and functional (e2e) test can be done via
+```
+cd client
+npm test
+npx cypress run --spec "cypress/e2e/spec.cy.js"
+```
 
 ## Technical Approach and Assumptions.
 * Filtering is done on the client side as opposed to using cql_filter param. We are doing an initial call to fetch all data.
