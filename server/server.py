@@ -12,6 +12,9 @@ app = FastAPI()
 cache = Cache(Cache.MEMORY, serializer=JsonSerializer())
 load_dotenv()
 
+TARGET_URL = os.getenv('REACT_APP_WFS_API_URL')
+CACHE_TTL_IN_SECONDS = 3600
+
 # Resolve CORS issue
 app.add_middleware(
     CORSMiddleware,
@@ -20,9 +23,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-TARGET_URL = os.getenv('REACT_APP_WFS_API_URL')
-CACHE_TTL_IN_SECONDS = 86400
 
 @app.get("/api")
 async def wfs_proxy():
